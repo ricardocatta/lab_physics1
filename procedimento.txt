@@ -1,0 +1,3 @@
+Para realizar o experimento foram utilizadas uma fita milimetrada (erro instrumental de 0,5mm), uma biloca, um cronômetro (erro instrumental de 0,01s) e uma rampa improvisada, basicamente uma capa dura de caderno inclinada. Colocamos a rampa  no início de uma mesa de vidro, e soltamos a biloca de duas alturas para comparar os resultados, a cada 40cm que a biloca percorria era marcado o tempo gasto, sendo assim, tivemos 3 marcações (até 120cm).
+É importante observar que a mesa e a biloca serem de vidro foi uma estratégia para que o atrito entre os dois fosse minimizado, assim aproximando a experiencia de um MRU (movimento retilíneo uniforme).
+O experimento foi realizado 3 vezes com cada altura, colhemos os dados e submetemos a um código que calcula os erros estatísticos.
