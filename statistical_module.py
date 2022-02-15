@@ -108,7 +108,7 @@ def propaga_incerteza_3D(derivada1, derivada2, derivada3, erro1, erro2, erro3):
     df2 = derivada2
     df3 = derivada3
     delta_f = np.sqrt((df1 * delta_x1)**2 + (df2 * delta_x2) **2 + (df3 * delta_x3) **2)
-    return delta_f
+    return np.round(delta_f,3)
 
 def covariance(x, y, n):
     """
