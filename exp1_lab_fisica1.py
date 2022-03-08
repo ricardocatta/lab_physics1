@@ -135,6 +135,24 @@ dydt2 = k2 * n2 * (t_mean_2[1:] ** (n2-1))
 propa_ince_h2 = sm.propaga_incerteza_3D(dydt2, 0, 0, 0.01, 0, 0)
 print("propa_ince_h2 = ", np.round(propa_ince_h2, 3))
 
+# Derivada do ln(d)
+d_lny_d = 1 / y[1:]
+
+# Derivada do ln(t1)
+d_lnt_t1 = 1 / t_mean_1[1:]
+
+# Derivada do ln(t1)
+d_lnt_t2 = 1 / t_mean_2[1:]
+
+sigma_lnd = sm.propaga_incerteza_3D(d_lny_d, 0, 0, 0.0005, 0, 0)
+sigma_lnt1 = sm.propaga_incerteza_3D(d_lnt_t1, 0, 0, 0.01, 0, 0)
+sigma_lnt2 = sm.propaga_incerteza_3D(d_lnt_t2, 0, 0, 0.01, 0, 0)
+
+print("sigma_lnd = ", np.round(sigma_lnd, 4))
+print("sigma_lnt1 = ", np.round(sigma_lnt1, 3))
+print("sigma_lnt2 = ", np.round(sigma_lnt2, 3))
+
+
 def plot_h1():
     """
     Plota o gráfico para a altura h1.
@@ -147,8 +165,8 @@ def plot_h1():
     plt.style.use('ggplot')
     fig = plt.figure(dpi=110)
     axes1 = fig.add_subplot(1, 1, 1)
-    axes1.set_ylabel('${y}$ $[m]$')
-    axes1.set_xlabel('${t}$ $[s]$')
+    axes1.set_ylabel('Posição $[m]$')
+    axes1.set_xlabel('tempo $[s]$')
     plt.plot(x1, y1, label ="linearização por MMQ para h1")
     #Coloca a barra de erro%
     ls = ''
@@ -169,8 +187,8 @@ def plot_h2():
     plt.style.use('ggplot')
     fig = plt.figure(dpi=110)
     axes1 = fig.add_subplot(1, 1, 1)
-    axes1.set_ylabel('${y}$ $[m]$')
-    axes1.set_xlabel('${t}$ $[s]$')
+    axes1.set_ylabel('Posição $[m]$')
+    axes1.set_xlabel('tempo $[s]$')
     plt.plot(x2, y2, label ="linearização por MMQ para h2")
     #Coloca a barra de erro%
     ls = ''
@@ -192,8 +210,8 @@ def plot_h1_h2():
     plt.style.use('ggplot')
     fig = plt.figure(dpi=110)
     axes1 = fig.add_subplot(1, 1, 1)
-    axes1.set_ylabel('${y}$ $[m]$')
-    axes1.set_xlabel('${t}$ $[s]$')
+    axes1.set_ylabel('Posição $[m]$')
+    axes1.set_xlabel('tempo $[s]$')
     plt.plot(x1, y1, label ="linearização por MMQ para h1")
     plt.plot(x2, y2, label ="linearização por MMQ para h2")
     plt.scatter(x1, y, label ="pontos experimentais para h1")
@@ -205,6 +223,6 @@ def plot_h1_h2():
 
 # Descomente a função que se deseja plotar o gráfico
 
-#plot_h1()
-#plot_h2()
+plot_h1()
+plot_h2()
 plot_h1_h2()
