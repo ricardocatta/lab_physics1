@@ -108,7 +108,7 @@ def propaga_incerteza_3D(derivada1, derivada2, derivada3, erro1, erro2, erro3):
     df2 = derivada2
     df3 = derivada3
     delta_f = np.sqrt((df1 * delta_x1)**2 + (df2 * delta_x2) **2 + (df3 * delta_x3) **2)
-    return np.round(delta_f,3)
+    return np.round(delta_f,1)
 
 def covariance(x, y, n):
     """
@@ -222,18 +222,20 @@ def sigma_m(y_ea, x):
     w_i = 1 / (y_ea ** 2)
     Delta = np.sum(w_i) * np.sum(w_i * (x ** 2)) - (np.sum(w_i * x)) ** 2
     sigma_final = np.abs(np.sum(w_i) / Delta)
-    return np.round(np.sqrt(sigma_final), 3)
+    return np.round(np.sqrt(sigma_final), 5)
 
 def sigma_b(y_ea, x):
     """
     Calcula a incerteza do coeficiente linear calculado pelo MMQ.
+    
     INPUT:
     y_ea = o erro associado da variável y;
     x = o vetor da variável x.
+
     OUTPUT:
     Retorna o valor da incerteza sigma b.
     """
     w_i = 1 / (y_ea ** 2)
     Delta = np.sum(w_i) * np.sum(w_i * (x ** 2)) - (np.sum(w_i * x)) ** 2
     sigma_final = np.abs(np.sum(w_i * (x ** 2)) / Delta)
-    return np.round(np.sqrt(sigma_final), 3)
+    return np.round(np.sqrt(sigma_final), 5)
